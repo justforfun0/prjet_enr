@@ -1,0 +1,62 @@
+\begin{titlepage}
+    % --- LOGO EN HAUT À GAUCHE ---
+    
+    \begin{tikzpicture}[remember picture,overlay]
+        % --- LOGOS ---
+        % Left Logo
+        \node[anchor=north west, inner sep=1.5cm] at (current page.north west) 
+            {\includegraphics[height=3.5cm]{garde/logo_UFR_PhITEM.jpg}};
+        % Right Logo
+        \node[anchor=north east, inner sep=1.5cm] at (current page.north east) 
+            {\includegraphics[height=3.5cm]{garde/logo.png}};
+            
+        % --- DECORATIVE ELEMENT ---
+        % A colored line at the bottom of the page to close the design
+        \fill[mainColor] (current page.south west) rectangle ++(\paperwidth, 1.5cm);
+       % Using 'yshift=0.75cm' to center the text in the band
+    \node[anchor=center, text=white, font=\bfseries] at ([yshift=0.75cm]current page.south) {\large 2025 - 2026};
+    \end{tikzpicture}
+
+    % --- TITRE DU RAPPORT ---
+    \centering
+    \vfill
+    {\LARGE \textsc{Rapport de Projet}} \\[0.5cm]
+    \rule{\linewidth}{1pt} \\[0.4cm]
+    {\Huge \bfseries ÉNERGIES RENOUVELABLES} \\[0.3cm]
+    {\huge \bfseries ET LEUR MISE EN \OE UVRE} \\[0.4cm]
+    \rule{\linewidth}{1pt} \\[1.5cm]
+
+    % --- CADRE TECHNIQUE ---
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        {\Large \textbf{Sujet :}} \\[0.2cm]
+        {\Large Étude d'une Station de Transfert d'Énergie par Pompage (STEP) \& Modélisation de Ligne HTB 130/225 kV}
+    \end{minipage}
+
+    \vspace{4cm}
+
+    % --- BLOC AUTEURS ---
+    \begin{minipage}{0.5\textwidth}
+        \begin{flushleft} \large
+            \textbf{Réalisé par :}\\
+            \rule{2cm}{0.4pt} \\
+            YOUSFI Mohammed Amine\\
+            SOUGRATI Wadii\\
+            SOUGRATI Mohammed Rida\\
+            AZOUIGUI Mohamed \\
+            ANSSEM Mohamed
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \textbf{Enseignants :}\\
+            \rule{2cm}{0.4pt} \\
+            JAMES Roudet
+        \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+
+\end{titlepage}
