@@ -1,0 +1,353 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[titletoc]{appendix}
+
+% Section numbering configuration
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Section header configuration
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+  
+\definecolor{mainColor}{RGB}{140, 20, 20} 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+
+\date{\today}
+
+% ================================================================
+\begin{document}
+\input{garde/garde.tex}
+\newpage
+\tableofcontents
+\newpage
+
+% ================================================================
+\section{Introduction et Contexte}
+
+La transition énergétique impose une intégration massive des énergies renouvelables intermittentes, notamment l’énergie solaire et l’énergie éolienne. Cette évolution du mix énergétique entraîne une variabilité importante de la production, rendant indispensable le développement de solutions de stockage à grande échelle.
+
+Les Stations de Transfert d’Énergie par Pompage (STEP) constituent aujourd’hui la technologie de stockage la plus mature et la plus largement déployée dans le monde. Elles représentent plus de 90 % des capacités mondiales de stockage d’électricité.
+
+% ================================================================
+\section{Principe de Fonctionnement d’une STEP}
+
+% =============================================================================
+% SECTION 1 : ÉTAT DE L'ART ET PRINCIPES FONDAMENTAUX
+% =============================================================================
+
+\section{Recherche Bibliographique et Contexte Technique}
+
+\subsection{Description générale et principe de fonctionnement}
+
+Une Station de Transfert d'Énergie par Pompage (STEP) fonctionne comme un système de stockage d'énergie à grande échelle, utilisant l'eau comme vecteur de transfert[cite: 25, 26]. Le dispositif opère en circuit fermé entre deux retenues d'eau situées à des altitudes différentes, ce qui permet de transformer l'énergie électrique en énergie potentielle de pesanteur, et inversement[cite: 24, 26]. 
+
+Le cycle d'exploitation se décompose en deux phases distinctes selon les besoins du réseau électrique :
+
+\begin{itemize}
+    \item \textbf{Le pompage (Phase de stockage) :} Durant les périodes de faible demande, où la production d'électricité est excédentaire, l'eau du bassin inférieur est refoulée vers le bassin supérieur[cite: 26]. L'énergie électrique est alors convertie et conservée sous forme potentielle[cite: 26].
+    \item \textbf{Le turbinage (Phase de production) :} À l'inverse, lors des pics de consommation, l'eau de la retenue supérieure est libérée. En chutant vers le bassin inférieur, elle actionne une turbine couplée à un alternateur pour injecter de l'électricité sur le réseau[cite: 26].
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/schema_step.png}
+\caption{Schéma de principe d’une installation STEP}
+\end{figure}
+
+
+
+D'un point de vue physique, l'énergie potentielle stockée au sein de l'installation est régie par la relation fondamentale suivante[cite: 36, 42]:
+
+\[
+E = \rho \cdot g \cdot H \cdot V
+\]
+
+Où les variables sont définies selon les caractéristiques techniques de l'étude :
+\begin{itemize}
+    \item $\rho$ : masse volumique de l’eau, fixée à $1000~kg/m^3$[cite: 36].
+    \item $g$ : accélération de la pesanteur, égale à $9,81~m/s^2$[cite: 36].
+    \item $H$ : hauteur de chute ou dénivelé entre les deux retenues[cite: 30, 39].
+    \item $V$ : volume d’eau transféré (capacité de la retenue)[cite: 32, 43].
+\end{itemize}
+
+\subsection{Rôle stratégique dans l’intégration des énergies renouvelables}
+
+L'importance des STEP s'est considérablement accrue ces dernières années en raison de la transition énergétique[cite: 26]. Elles constituent aujourd'hui un levier indispensable pour l'intégration des énergies renouvelables intermittentes, telles que le solaire et l'éolien.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/stockage_enr.jpg}
+\caption{Rôle du stockage dans l’intégration des énergies renouvelables}
+\end{figure}
+
+L'implémentation de telles structures permet de répondre à plusieurs enjeux critiques du mix énergétique moderne :
+\begin{itemize}
+    \item \textbf{La régulation de fréquence :} Elles assurent l'équilibre instantané entre l'offre et la demande pour stabiliser le réseau.
+    \item \textbf{La compensation des fluctuations :} Elles pallient l'intermittence naturelle des énergies vertes.
+    \item \textbf{Le stockage massif :} Contrairement aux batteries, les STEP permettent de stocker des volumes d'énergie considérables (ici, jusqu'à 2 millions de $m^3$ turbinables)[cite: 33, 43].
+    \item \textbf{L’optimisation économique :} Elles permettent de valoriser l'énergie produite en surplus lors des périodes creuses pour la restituer lorsque la valeur marchande de l'électricité est maximale.
+\end{itemize}
+% ================================================================
+\section{Étude Théorique d’une Installation STEP}
+
+\subsection{Données du problème}
+
+L’installation étudiée est une Station de Transfert d’Énergie par Pompage (STEP) d’une puissance totale installée de 80 MW, répartie sur quatre groupes réversibles de 20 MW chacun.  
+La différence d’altitude nominale entre les deux retenues est d’environ $\SI{120}{\meter}$, tandis que le volume exploitable considéré pour l’étude correspond à $2 \times 10^6$ m$^3$ d’eau.
+
+Ces paramètres constituent les données de base permettant d’évaluer les performances énergétiques et temporelles de l’installation.
+
+\subsection{Plage réelle de fonctionnement hydraulique}
+
+En tenant compte des niveaux extrêmes des retenues, la hauteur de chute n’est pas constante mais varie entre :
+
+\[
+H_{max} = \SI{125.6}{\meter}
+\qquad
+H_{min} = \SI{90.9}{\meter}
+\]
+
+Cette variation influence directement la puissance hydraulique disponible ainsi que les débits admissibles en fonctionnement réel. L’installation opère donc sur une plage dynamique de hauteurs de chute, ce qui impacte ses performances instantanées.
+
+\subsection{Performances énergétiques des groupes}
+
+La puissance hydraulique disponible s’exprime par :
+
+\[
+P_h = \rho g H Q
+\]
+
+À partir des données constructeur, les rendements des groupes sont évalués à :
+
+\[
+\eta_t = 81.55\% \quad \text{(mode turbinage)}
+\]
+\[
+\eta_p = 74.56\% \quad \text{(mode pompage)}
+\]
+
+Le rendement global du cycle complet de stockage (pompage suivi du turbinage) est alors :
+
+\[
+\eta_{cycle} = 60.8\%
+\]
+
+Ce rendement traduit l’efficacité énergétique globale du système et caractérise la part d’énergie effectivement restituée après un cycle complet.
+
+\subsection{Analyse énergétique du cycle}
+
+Pour produire 1 kWh d’énergie électrique en phase de turbinage, l’énergie nécessaire en phase de pompage est :
+
+\[
+E_{entrée} = \frac{1}{\eta_{cycle}} = \SI{1.64}{\kilo\watt\hour}
+\]
+
+La STEP n’est donc pas un producteur net d’énergie, mais un dispositif de stockage permettant de transférer l’énergie dans le temps. Son intérêt réside dans la gestion des pics de consommation et l’intégration des énergies renouvelables intermittentes.
+
+\subsection{Temps théoriques de fonctionnement}
+
+En considérant un volume transféré de $2 \times 10^6$ m$^3$ et les débits nominaux des groupes :
+
+Temps de turbinage :
+\[
+t_{turb} = \SI{5.55}{\hour}
+\]
+
+Temps de pompage :
+\[
+t_{pomp} = \SI{10.69}{\hour}
+\]
+
+Ces durées sont qualifiées de théoriques car elles supposent :
+\begin{itemize}
+\item une hauteur de chute constante,
+\item l’absence de pertes hydrauliques dans les conduites,
+\item des rendements invariants quel que soit le point de fonctionnement.
+\end{itemize}
+
+En exploitation réelle, la variation des niveaux des retenues modifie progressivement la hauteur de chute et donc les conditions de fonctionnement.
+% ================================================================
+% ================================================================
+% ================================================================
+\section{Modélisation de la Liaison HTB 130/225 kV}
+
+\subsection{Description du câble}
+
+La centrale est raccordée au réseau 130/225 kV par une liaison souterraine de 20 km constituée d’un câble unipolaire en aluminium de section 400 mm$^2$, isolé en XLPE (polyéthylène réticulé).
+
+La figure suivante présente la structure interne du câble étudié.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/coupe_cable.jpg}
+\caption{Coupe transversale du câble HTB 400 mm$^2$}
+\end{figure}
+
+Cette constitution influence directement les paramètres électriques linéiques qui conditionnent le comportement propagatif de la ligne.
+
+\subsection{Paramètres linéiques}
+
+À la température de fonctionnement estimée à 70°C, les caractéristiques linéiques du câble sont :
+
+\begin{itemize}
+\item $R = 0.0849 \, \Omega/\text{km}$
+\item $L = 0.4576 \, \text{mH/km}$
+\item $C = 0.022 \, \mu\text{F/km}$
+\item $G = 6.9 \times 10^{-6} \, \text{S/km}$
+\end{itemize}
+
+Ces paramètres permettent de définir :
+
+\[
+Z = R + j\omega L
+\]
+\[
+Y = G + j\omega C
+\]
+
+L’impédance caractéristique de la liaison est alors :
+
+\[
+Z_c \approx 155 \, \Omega
+\]
+
+Cette grandeur caractérise le rapport tension/courant d’une onde se propageant sur la ligne et conditionne les phénomènes de réflexion et de propagation.
+% ================================================================
+\section{Analyse Propagative}
+
+Le comportement électrique de la ligne est décrit par les équations des télégraphistes, qui modélisent l’évolution spatiale de la tension et du courant en régime sinusoïdal.
+
+La résolution de ces équations conduit à une formulation matricielle reliant les grandeurs électriques en tout point de la ligne aux conditions imposées à la charge.
+
+\subsection{Comparaison des modèles}
+
+Pour une longueur de 20 km, le modèle propagatif (solution exacte) et le modèle simplifié à impédance série donnent des résultats proches en tension.  
+Cependant, le modèle série surestime le courant car il néglige la capacité linéique du câble et donc le courant capacitif associé.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/comparaison_modeles_20km.png}
+\caption{Comparaison modèle exact et modèle série}
+\end{figure}
+
+Lorsque la longueur augmente (cas théorique de 1000 km), le comportement capacitif devient dominant. On observe alors :
+
+\begin{itemize}
+\item une élévation de la tension en bout de ligne à vide (effet Ferranti),
+\item une augmentation significative du courant capacitif.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/evolution_VI_1000km.png}
+\caption{Évolution tension/courant sur 1000 km}
+\end{figure}
+
+\subsection{Rendement et pertes}
+
+Le rendement de la liaison décroît avec la distance en raison :
+
+\begin{itemize}
+\item des pertes Joule liées à la résistance série,
+\item des pertes diélectriques dans l’isolant,
+\item de la circulation croissante de puissance réactive due à la capacité du câble.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/rendement_cable.png}
+\caption{Rendement du câble en fonction de la longueur}
+\end{figure}
+
+Ainsi, bien que les pertes restent faibles pour des distances modérées (20 km), l’augmentation du courant capacitif limite techniquement l’extension des liaisons souterraines HTB sur de longues distances.
+\section{Étude du Potentiel des Écrans}
+
+Les câbles haute tension souterrains comportent un écran métallique entourant l’isolant. 
+Cet écran joue un rôle essentiel : il confine le champ électrique à l’intérieur du câble, assure la continuité équipotentielle et permet l’évacuation des courants de défaut vers la terre.
+
+Cependant, lorsque le courant circule dans l’âme conductrice, un couplage inductif apparaît entre l’âme et l’écran. Ce phénomène est caractérisé par la mutuelle $M$ existant entre les deux conducteurs.
+
+La tension induite dans l’écran s’exprime alors par :
+
+\[
+V = j \omega M I
+\]
+
+où $I$ est le courant circulant dans l’âme et $\omega = 2\pi f$ la pulsation du réseau.
+
+Si l’écran est relié à la terre à une seule extrémité, le courant induit ne peut pas circuler librement. Il en résulte l’apparition d’une différence de potentiel à l’extrémité non mise à la terre.  
+Cette tension peut atteindre des valeurs élevées pour des courants importants et des longueurs de câble significatives, constituant un risque :
+
+\begin{itemize}
+\item pour la sécurité du personnel,
+\item pour l’intégrité des équipements,
+\item pour la tenue diélectrique des accessoires de raccordement.
+\end{itemize}
+
+Afin de limiter ces tensions induites, plusieurs solutions sont mises en œuvre :
+
+\begin{itemize}
+\item \textbf{Mise à la terre aux deux extrémités :} elle permet la circulation du courant induit dans l’écran et limite l’apparition de tensions dangereuses.
+\item \textbf{Cross-bonding :} cette technique consiste à croiser les écrans par sections successives afin d’équilibrer les tensions induites et de réduire les pertes dans les écrans pour les longues liaisons.
+\end{itemize}
+
+Le choix du mode de mise à la terre des écrans constitue donc un paramètre déterminant dans la conception des liaisons HTB souterraines, tant du point de vue de la sécurité que de l’optimisation des pertes.
+\section{Conclusion Générale}
+
+Cette étude a permis d’analyser de manière globale le fonctionnement d’une installation de Station de Transfert d’Énergie par Pompage ainsi que le comportement électrique de sa liaison Haute Tension associée.
+
+Les performances énergétiques de la STEP ont été quantifiées, mettant en évidence un rendement global cohérent avec les valeurs industrielles. L’analyse confirme que la STEP constitue un dispositif de stockage permettant d’assurer la flexibilité du réseau plutôt qu’un producteur net d’énergie.
+
+La modélisation de la liaison HTB souterraine a permis de caractériser précisément ses paramètres électriques et d’étudier son comportement en régime propagatif. Les résultats soulignent le rôle prépondérant de la capacité linéique, responsable d’un courant capacitif croissant avec la longueur du câble.
+
+Ainsi, la distance de transport en câble souterrain HTB est limitée non seulement par les pertes Joule et diélectriques, mais également par l’augmentation du courant total liée aux effets capacitifs. Ces contraintes doivent être prises en compte dans la conception et le dimensionnement des liaisons électriques associées aux grandes installations de production.
+\end{document}
